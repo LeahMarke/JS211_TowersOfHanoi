@@ -23,7 +23,7 @@ let stacks = {
   c: [],
 };
 
-// Start here. What is this function doing?
+// shows stacks in console
 const printStacks = () => {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
@@ -31,19 +31,15 @@ const printStacks = () => {
 };
 
 const movePiece = (startStack, endStack) => {
-  // move the end piece of the startStackmove it to eht end of selected endstack
+  // moves the end piece of the startStack, moves it to the end of selected endstack
 
-  // .pop removes last element, what to put for "startStack"?
+  // .pop removes last element
   let lastElement = stacks[startStack].pop();
-  // console.log(lastElement);
-  // .push adds element to end, need to tell it to push onto the endStack???? what to put for endStack?
+  // .push adds element to end
   stacks[endStack].push(lastElement);
-  // console.log(newElement);
 };
 
-// Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
 const isLegal = (startStack, endStack) => {
-  // is startstack > endstack? false
   if (
     stacks[startStack].slice(-1) < stacks[endStack].slice(-1) ||
     stacks[endStack].length == 0
@@ -52,12 +48,8 @@ const isLegal = (startStack, endStack) => {
   } else {
     return false;
   }
-  // if (stacks[startStack].slice(-1) == stacks[endStack].slice(-1)) {
-  //   return false;
-  // }
 };
 
-// What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
   // if(endstack.length )
   // if all 4 numbers are in stack b or c
@@ -69,12 +61,8 @@ const checkForWin = () => {
   }
 };
 
-// When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
   // here is where we put it all together
-  // grab the arguments (a and b or c) and set variables
-  // let startStack = startStack;
-  // let endStack = endStack;
   // check to see  if legal (pass in start, end)
   // if true, call move piece
   if (isLegal(startStack, endStack)) {
@@ -83,12 +71,10 @@ const towersOfHanoi = (startStack, endStack) => {
     console.log("Invalid Move. Try Again");
   }
   // if its not ok, display "invalid move", don't move piece
-  // checkForWin();
   if (checkForWin()) {
     console.log("You won!");
   }
 };
-// towersOfHanoi("a", "c");
 
 const getPrompt = () => {
   printStacks();
